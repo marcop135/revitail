@@ -63,21 +63,13 @@ function Stack() {
       aria-labelledby='stack-heading'
       className='border-line border-t py-16 lg:py-24'
     >
-      <div className='mb-10 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:items-end'>
-        <h2
-          id='stack-heading'
-          className='font-display text-4xl leading-none font-bold tracking-[-0.02em] sm:text-5xl'
-        >
-          What is wired in
-        </h2>
-        <p className='text-muted max-w-xl lg:justify-self-end'>
-          Versions are read from{' '}
-          <code className='font-mono'>package-lock.json</code> when the site
-          builds, so this list matches what{' '}
-          <code className='font-mono'>npm install</code> gives you.
-        </p>
-      </div>
-      <div className='border-line bg-line grid gap-px overflow-hidden rounded-md border sm:grid-cols-2 lg:grid-cols-4'>
+      <h2
+        id='stack-heading'
+        className='font-display mb-10 text-4xl leading-none font-bold tracking-[-0.02em] sm:text-5xl'
+      >
+        What is wired in
+      </h2>
+      <div className='border-line bg-line reveal grid gap-px overflow-hidden rounded-md border sm:grid-cols-2 lg:grid-cols-4'>
         {GROUPS.map(({ title, accent, items }) => (
           <section
             key={title}

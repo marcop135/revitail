@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useOnScreen } from '../hooks/useOnScreen';
 
 // Mirrors vite.config.js, .lintstagedrc.js, ci.yml and release.yml. Change the
 // copy here when one of those changes.
@@ -38,6 +39,9 @@ const STEPS = [
 ];
 
 function Pipeline() {
+  const stageRef = useRef(null);
+  const run = useOnScreen(stageRef);
+
   return (
     // Full-bleed band: the shadow paints past the container and the clip-path
     // keeps it from adding horizontal scroll.
@@ -63,20 +67,27 @@ function Pipeline() {
       </div>
 
       <ol
-        className='grid gap-x-4 gap-y-8 md:grid-cols-2 xl:grid-cols-4'
+        ref={stageRef}
+        data-run={run || undefined}
+        className='pl-stage grid gap-x-4 gap-y-8 md:grid-cols-2 xl:grid-cols-4'
         role='list'
       >
         {STEPS.map(({ when, where, title, body, checks, tone }, index) => (
-          <li key={when} className='flex flex-col'>
+          <li key={when} className='pl-step reveal flex flex-col'>
             <div className='mb-4 flex items-center gap-3' aria-hidden='true'>
-              <span className='bg-bolt text-on-bolt grid size-9 shrink-0 place-items-center rounded-full font-mono text-sm font-bold'>
+              <span className='pl-badge bg-bolt text-on-bolt grid size-9 shrink-0 place-items-center rounded-full font-mono text-sm font-bold'>
                 {index + 1}
               </span>
-              <span
-                className={`h-0.5 flex-1 ${index < STEPS.length - 1 ? 'bg-[linear-gradient(90deg,var(--bolt),#bd34fe_50%,#58c4dc)] opacity-70' : 'bg-line'}`}
-              />
+              <span className='relative h-4 flex-1 overflow-hidden'>
+                <span
+                  className={`absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 ${index < STEPS.length - 1 ? 'bg-[linear-gradient(90deg,var(--bolt),#bd34fe_50%,#58c4dc)] opacity-70' : 'bg-line'}`}
+                />
+                <span className='pl-comet absolute inset-0'>
+                  <span className='absolute top-1/2 right-0 h-1 w-14 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,transparent,var(--bolt))] opacity-80 shadow-[0_0_0.375rem_rgb(255_197_23/0.5)]' />
+                </span>
+              </span>
             </div>
-            <article className='border-line bg-canvas flex flex-1 flex-col rounded-md border p-5'>
+            <article className='pl-card border-line bg-canvas flex flex-1 flex-col rounded-md border p-5'>
               <p className={`font-mono text-xs font-bold uppercase ${tone}`}>
                 {when}
               </p>
@@ -87,7 +98,7 @@ function Pipeline() {
                 {checks.map((check) => (
                   <li
                     key={check}
-                    className='border-line rounded border px-2 py-0.5 font-mono text-xs'
+                    className='pl-chip border-line rounded border px-2 py-0.5 font-mono text-xs'
                   >
                     {check}
                   </li>
@@ -97,12 +108,6 @@ function Pipeline() {
           </li>
         ))}
       </ol>
-
-      <p className='text-muted mt-8 max-w-2xl text-sm'>
-        Upkeep runs on its own: Dependabot and a biweekly{' '}
-        <code className='text-ink font-mono'>npm update</code> merge patch and
-        minor bumps once CI passes, and a scheduled patch release ships them.
-      </p>
     </section>
   );
 }

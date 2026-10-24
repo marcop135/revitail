@@ -29,7 +29,7 @@ function ScriptsTable() {
           The five you will run most. The docs list the rest.
         </p>
       </div>
-      <div className='surface overflow-x-auto'>
+      <div className='surface reveal overflow-x-auto'>
         <table className='w-full text-left text-sm'>
           <caption className='sr-only'>npm scripts in this starter</caption>
           <thead className='sr-only'>

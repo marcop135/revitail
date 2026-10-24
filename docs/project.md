@@ -5,7 +5,7 @@
 | Command                 | What it does                                         |
 | ----------------------- | ---------------------------------------------------- |
 | `npm run dev`           | Dev server on `http://localhost:5173`                |
-| `npm run build`         | Production build to `dist/`                          |
+| `npm run build`         | Production build to `dist/`, home page prerendered   |
 | `npm run preview`       | Serve the production build                           |
 | `npm run lint`          | ESLint + Stylelint + HTMLHint                        |
 | `npm run lint:fix`      | Same, fixing what can be fixed                       |
@@ -27,7 +27,8 @@ src/
   hooks/        custom hooks
   test/         Vitest setup (jest-dom)
   App.jsx       root component, App.test.jsx next to it
-  main.jsx      entry
+  main.jsx      entry, hydrates the prerendered home page
+  entry-server.jsx  build-time prerender (scripts/prerender.mjs)
   style.css     Tailwind, fonts and design tokens
 public/         copied as-is to dist/
 scripts/        build and release helpers
