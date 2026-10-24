@@ -1,7 +1,7 @@
 ---
 title: 'Revitail: React, Tailwind and Vite starter, linted and tested'
 canonical: https://vitereact.marcopontili.com/
-description: A starter template for React 19, Vite 8 and Tailwind CSS 4, with linters, tests and CI already wired up and passing.
+description: A starter template for React, Vite and Tailwind CSS, with linters, tests and CI already wired up and passing.
 dateModified: 2026-10-24
 ---
 
@@ -9,7 +9,7 @@ dateModified: 2026-10-24
 
 Start fresh. Revitalize your next React project.
 
-**Revitail** is a free, open-source starter template: React 19, Vite 8 and Tailwind CSS 4, with linters, tests and CI already wired up and passing.
+**Revitail** is a free, open-source starter template: React, Vite and Tailwind CSS, with linters, tests and CI already wired up and passing.
 
 ## Quick start
 
@@ -38,8 +38,6 @@ Every check runs as early as it can, and CI runs them all again before a merge.
 2. **On commit** (Husky + lint-staged): the pre-commit hook runs `eslint --fix`, `stylelint --fix` and `prettier --write` on staged files only.
 3. **On pull request** (GitHub Actions, Node 22): CI runs `npm run release:check`, the same command you can run locally: lint, format check, tests, build and production audit.
 4. **On tag** (`release.yml`): a `vX.Y.Z` tag re-runs the gates and publishes a GitHub Release with notes taken from `CHANGELOG.md`.
-
-Dependabot and a biweekly `npm update` merge patch and minor bumps once CI passes, and a scheduled patch release ships them.
 
 ## Scripts
 

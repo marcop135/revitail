@@ -37,7 +37,7 @@
     <meta name="author" content="Marco Pontili" />
     <meta
       name="robots"
-      content="index, follow, max-snippet:-1, max-image-preview:large"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
     <link rel="canonical" href="https://vitereact.marcopontili.com/" />
 
@@ -64,23 +64,8 @@
       property="og:image:alt"
       content="Vite logo tile, the name Revitail with the line Start fresh, revitalize your next React project, a terminal running npm run release:check with lint, format, test, build and audit passing, and stacked Tailwind CSS, React and Vite planes"
     />
+    <!-- X falls back to the og: tags for title, description and image. -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Revitail: React, Tailwind and Vite, already linted and tested"
-    />
-    <meta
-      name="twitter:description"
-      content="A Vite starter for React 19 and Tailwind CSS v4 with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up."
-    />
-    <meta
-      name="twitter:image"
-      content="https://vitereact.marcopontili.com/og/hero.png"
-    />
-    <meta
-      name="twitter:image:alt"
-      content="Vite logo tile, the name Revitail with the line Start fresh, revitalize your next React project, a terminal running npm run release:check with lint, format, test, build and audit passing, and stacked Tailwind CSS, React and Vite planes"
-    />
 
     <script type="application/ld+json">
       {
@@ -91,27 +76,88 @@
             "@id": "https://vitereact.marcopontili.com/#website",
             "url": "https://vitereact.marcopontili.com/",
             "name": "Revitail",
+            "description": "React, Vite and Tailwind CSS starter template with linters, tests and CI already wired up.",
             "inLanguage": "en",
-            "publisher": { "@id": "https://marcopontili.com/#person" }
+            "publisher": { "@id": "https://marcopontili.com/#person" },
+            "copyrightHolder": { "@id": "https://marcopontili.com/#person" }
           },
           {
-            "@type": "SoftwareSourceCode",
+            "@type": "WebPage",
+            "@id": "https://vitereact.marcopontili.com/#webpage",
+            "url": "https://vitereact.marcopontili.com/",
+            "name": "Revitail: React, Tailwind and Vite starter, linted and tested",
+            "description": "A Vite starter for React 19 and Tailwind CSS v4 with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up.",
+            "inLanguage": "en",
+            "isPartOf": {
+              "@id": "https://vitereact.marcopontili.com/#website"
+            },
+            "about": { "@id": "https://vitereact.marcopontili.com/#software" },
+            "mainEntity": {
+              "@id": "https://vitereact.marcopontili.com/#software"
+            },
+            "primaryImageOfPage": {
+              "@id": "https://vitereact.marcopontili.com/#primaryimage"
+            },
+            "author": { "@id": "https://marcopontili.com/#person" },
+            "dateModified": "2026-10-24",
+            "potentialAction": {
+              "@type": "ReadAction",
+              "target": "https://vitereact.marcopontili.com/index.md"
+            }
+          },
+          {
+            "@type": "ImageObject",
+            "@id": "https://vitereact.marcopontili.com/#primaryimage",
+            "url": "https://vitereact.marcopontili.com/og/hero.png",
+            "contentUrl": "https://vitereact.marcopontili.com/og/hero.png",
+            "width": 1200,
+            "height": 630,
+            "caption": "Revitail: a terminal running npm run release:check with every gate passing, next to stacked Tailwind CSS, React and Vite planes"
+          },
+          {
+            "@type": ["SoftwareSourceCode", "SoftwareApplication"],
             "@id": "https://vitereact.marcopontili.com/#software",
             "name": "Revitail",
+            "alternateName": "revitail",
             "description": "A Vite starter for React 19 and Tailwind CSS v4 with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up.",
             "url": "https://vitereact.marcopontili.com/",
+            "sameAs": ["https://github.com/marcop135/revitail"],
             "codeRepository": "https://github.com/marcop135/revitail",
             "programmingLanguage": ["JavaScript", "CSS"],
             "runtimePlatform": "Node.js 22",
+            "softwareRequirements": "Node.js 22.22.2 or newer",
+            "applicationCategory": "DeveloperApplication",
+            "applicationSubCategory": "Starter template",
+            "operatingSystem": "Windows, macOS, Linux",
+            "keywords": [
+              "React starter template",
+              "Vite",
+              "Tailwind CSS",
+              "ESLint",
+              "Stylelint",
+              "Prettier",
+              "Vitest",
+              "GitHub Actions"
+            ],
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
             "license": "https://opensource.org/licenses/MIT",
-            "image": "https://vitereact.marcopontili.com/og/hero.png",
-            "author": { "@id": "https://marcopontili.com/#person" }
+            "image": {
+              "@id": "https://vitereact.marcopontili.com/#primaryimage"
+            },
+            "author": { "@id": "https://marcopontili.com/#person" },
+            "maintainer": { "@id": "https://marcopontili.com/#person" }
           },
           {
             "@type": "Person",
             "@id": "https://marcopontili.com/#person",
             "name": "Marco Pontili",
-            "url": "https://marcopontili.com"
+            "url": "https://marcopontili.com",
+            "sameAs": ["https://github.com/marcop135"]
           }
         ]
       }

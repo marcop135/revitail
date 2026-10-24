@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Search, AI answers and training are all welcome: the starter is MIT licensed.
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
 Sitemap: https://vitereact.marcopontili.com/sitemap.xml

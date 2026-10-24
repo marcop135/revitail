@@ -39,7 +39,9 @@ describe('App', () => {
   it('renders the lazy-loaded pipeline and scripts sections', async () => {
     render(<App />);
     expect(await screen.findByText('From save to release')).toBeTruthy();
-    expect(await screen.findByText('npm run release:check')).toBeTruthy();
+    expect(
+      await screen.findByRole('rowheader', { name: 'npm run release:check' })
+    ).toBeTruthy();
   });
 
   it('closes with a link to the repo', async () => {
