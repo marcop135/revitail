@@ -4,6 +4,13 @@ import { useCopy } from '../hooks/useCopy';
 
 const ALL = QUICKSTART.join('\n');
 
+// Literal classes so Tailwind can see them; one per quick start line.
+const STAGGER = [
+  '[animation-delay:360ms]',
+  '[animation-delay:480ms]',
+  '[animation-delay:600ms]',
+];
+
 function CopyButton({ label, done, onClick }) {
   return (
     <button
@@ -44,7 +51,7 @@ function Quickstart() {
           {QUICKSTART.map((line, index) => (
             <li
               key={line}
-              className='flex items-center gap-3 rounded px-2 py-1.5 hover:bg-white/5'
+              className={`animate-rise flex items-center gap-3 rounded px-2 py-1.5 hover:bg-white/5 ${STAGGER[index] ?? ''}`}
             >
               <span aria-hidden='true' className='text-[#58c4dc] select-none'>
                 $
@@ -56,6 +63,12 @@ function Quickstart() {
                 className='min-w-0 flex-1 [overflow-wrap:anywhere] whitespace-pre-wrap'
               >
                 {line}
+                {index === QUICKSTART.length - 1 && (
+                  <span
+                    aria-hidden='true'
+                    className='bg-term-ink animate-blink ml-1 inline-block h-[1.1em] w-[0.55em] align-text-bottom'
+                  />
+                )}
               </code>
               <CopyButton
                 label={line}

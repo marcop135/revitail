@@ -22,7 +22,7 @@
 [![Vitest](https://img.shields.io/github/package-json/dependency-version/marcop135/revitail/dev/vitest?logo=vitest&label=vitest)](https://vitest.dev/)
 
 Every React project starts with the same chore: wiring linters, formatters, tests and CI, then checking it all works.
-Revitail comes with all of it wired up and passing, on React 19, Vite 8 and Tailwind CSS v4.
+Revitail comes with all of it wired up and passing, on React, Vite and Tailwind CSS.
 
 Start fresh. Revitalize your next React project.
 
@@ -48,7 +48,7 @@ cd my-app && npm install
 npm run dev
 ```
 
-The dev server runs at `http://localhost:5173`. Next: [rename the project and remove the demo](docs/getting-started.md).
+The dev server runs at `http://localhost:5173`.
 
 ## Docs
 
@@ -64,7 +64,9 @@ The dev server runs at `http://localhost:5173`. Next: [rename the project and re
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). Report vulnerabilities through [SECURITY.md](./SECURITY.md).
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+Report vulnerabilities through [SECURITY.md](./SECURITY.md).
 
 ## Author
 

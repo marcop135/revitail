@@ -9,7 +9,7 @@ Guidance for working in this repository.
 ## Commands
 
 - `npm run dev` — Vite dev server.
-- `npm run build` — production build to `dist/`.
+- `npm run build`: production build to `dist/`, then an SSR build of `src/entry-server.jsx` and `scripts/prerender.mjs`, which writes the home page HTML into `dist/index.html`.
 - `npm run preview` — serve the production build (default port 4173).
 - `npm run lint` / `npm run lint:fix` — ESLint (JS/JSX) + Stylelint (CSS) + HTMLHint (`index.html`).
 - `npm run format` / `npm run format:check` — Prettier (class ordering via `prettier-plugin-tailwindcss`).
@@ -20,7 +20,7 @@ Guidance for working in this repository.
 
 ## Architecture
 
-- Entry: `index.html` mounts `#app`; `src/main.jsx` renders `<App>` (no `StrictMode` wrapper).
+- Entry: `index.html` mounts `#app`; `src/main.jsx` hydrates the prerendered home page, or client-renders `<App>` in dev and on other paths (no `StrictMode` wrapper). The prerender fails the build if React emits an inline script, which the CSP would block.
 - `src/App.jsx` composes `ErrorBoundary > Header > MainContent > Footer`; any path other than `/` renders `NotFound` (adds `noindex`).
 - `src/components/MainContent.jsx` renders `Hero` and lazy-loads `Stack`, `Pipeline` and `ScriptsTable` via `React.lazy` + `Suspense`, then renders the static `Closing` call to action.
 - The page is the starter's own pitch: `Hero` carries the value line, `Quickstart` (the `git clone` / `npm install` / `npm run dev` lines with per-line and copy-all buttons) and `StackIllustration`; `Stack` renders `#stack`, `Pipeline` renders `#pipeline` as a full-bleed `--surface` band that follows the theme, `ScriptsTable` renders `#scripts`. The header nav links to the three anchors.

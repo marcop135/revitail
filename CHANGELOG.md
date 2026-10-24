@@ -5,6 +5,18 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [1.13.0] - 2026-10-24
+
+### Added
+
+- Prerender the home page so crawlers and AI agents read it without JavaScript.
+- Expand the JSON-LD graph and add Content Signals to `robots.txt`.
+- Animate the hero, the quick start and the pipeline.
+
+### Changed
+
+- Redesign the closing section.
+
 ## [1.12.1] - 2026-10-24
 
 ### Removed
