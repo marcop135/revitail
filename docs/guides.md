@@ -41,7 +41,7 @@ The starter has one route: `src/App.jsx` renders the page on `/` and `NotFound` 
 npm install react-router
 ```
 
-Wrap the app in `BrowserRouter`, declare a `Route` per page and keep `NotFound` as the `path='*'` route. The SPA fallback in [Deploy](./deploy.md#spa-fallback) already sends every path to `index.html`.
+Wrap the app in `BrowserRouter`, declare a `Route` per page and keep `NotFound` as the `path='*'` route. Configure the host to serve those routes and preserve [HTTP 404 for unknown URLs](./deploy.md#missing-pages).
 
 Load heavy pages with `React.lazy` and `Suspense`, as `src/components/MainContent.jsx` does for the sections below the fold.
 

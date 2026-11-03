@@ -2,15 +2,14 @@
 
 `npm run build` writes a static site to `dist/`. Any static host serves it.
 
-## SPA fallback
+## Missing pages
 
-Paths without a file behind them must serve `index.html`, so the app can render its own not-found view.
+This starter has one page. Unknown URLs must return HTTP 404 with `404.html`, not HTTP 200 with `index.html`.
 
-| Host                      | Setup                                                                                      |
-| ------------------------- | ------------------------------------------------------------------------------------------ |
-| Apache                    | Included: `public/.htaccess` is copied into `dist/`                                        |
-| Netlify, Cloudflare Pages | `public/_redirects` with `/* /index.html 200`                                              |
-| Vercel                    | `vercel.json` with `{ "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }` |
+| Host               | Setup                                                                            |
+| ------------------ | -------------------------------------------------------------------------------- |
+| Apache             | Included: `public/.htaccess` returns 404 for unknown paths and serves `404.html` |
+| Other static hosts | Configure `404.html` as the error document and preserve HTTP 404                 |
 
 ## Apache: `public/.htaccess`
 

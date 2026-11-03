@@ -9,5 +9,5 @@
 | `npm run format:check` fails in CI                                  | A file was committed without Prettier. Run `npm run format` and commit.                                                                   |
 | `npm run release:check` fails on audit                              | A production dependency has a moderate or higher advisory. Run `npm audit --omit=dev` to see it, then update the package.                 |
 | A script or style is blocked in production, not in dev              | The CSP in `public/.htaccess` allows only `'self'`. Move inline scripts to files, or add the host to the policy.                          |
-| A deep link returns 404 in production                               | The host has no SPA fallback. See [Deploy](./deploy.md#spa-fallback).                                                                     |
+| A missing page returns HTTP 200 in production                       | Remove the catch-all rewrite to `index.html`. See [Deploy](./deploy.md#missing-pages).                                                    |
 | `import.meta.env.VITE_*` is `undefined`                             | The variable lacks the `VITE_` prefix, sits in the wrong `.env` file, or the dev server was not restarted after adding it.                |
