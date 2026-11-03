@@ -5,6 +5,18 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [Unreleased]
+
+### Changed
+
+- Use the theme-aware favicon in the site header and hide its navigation on small screens ([#286](https://github.com/marcop135/revitail/pull/286), [#285](https://github.com/marcop135/revitail/issues/285)).
+
+### Fixed
+
+- Keep the site's closing terminal readable without JavaScript ([#286](https://github.com/marcop135/revitail/pull/286)).
+- Disable animation delays in the site's reduced-motion view ([#286](https://github.com/marcop135/revitail/pull/286)).
+- Return HTTP 404 for unknown site URLs ([#286](https://github.com/marcop135/revitail/pull/286)).
+
 ## [1.13.1] - 2026-11-03
 
 ### Changed
