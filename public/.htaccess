@@ -12,13 +12,11 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # SPA fallback: extensionless paths that are not files or directories go to
-  # the app, which renders its own not-found view with noindex. Missing files
-  # (anything with an extension) fall through to the real 404 above.
+  # This starter has one page. Unknown paths must return a real 404 rather
+  # than the home page with a successful status.
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_URI} !\.[a-z0-9]{1,8}$ [NC]
-  RewriteRule ^ /index.html [L]
+  RewriteRule ^ - [R=404,L]
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -34,8 +32,8 @@ ErrorDocument 404 /404.html
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://mt.marcopontili.com; connect-src 'self' https://mt.marcopontili.com; img-src 'self' data: https://mt.marcopontili.com; style-src 'self'; font-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 
   # Vite fingerprints everything under /assets/, so it is cached forever.
-  # Unhashed icons, images and matomo.js get a week. HTML, the SPA fallback
-  # and the root text files revalidate every time so a deploy shows at once.
+  # Unhashed icons, images and matomo.js get a week. HTML and the root text
+  # files revalidate every time so a deploy shows at once.
   <If "%{REQUEST_URI} =~ m#^/assets/#">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </If>

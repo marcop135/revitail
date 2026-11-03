@@ -1,6 +1,5 @@
 import React from 'react';
 import { REPO_URL } from '../constants';
-import { ViteLogo } from './Logos';
 
 const NAV = [
   { href: '/#stack', label: 'Stack' },
@@ -21,10 +20,16 @@ function Header() {
         href='/'
         className='focus-ring flex min-h-11 items-center gap-2.5 rounded-md font-mono text-sm font-bold tracking-tight'
       >
-        <ViteLogo className='size-6' />
+        <img
+          src='/favicon.svg'
+          alt=''
+          width='24'
+          height='24'
+          className='size-6'
+        />
         Revitail
       </a>
-      <nav aria-label='Primary'>
+      <nav aria-label='Primary' className='hidden sm:block'>
         <ul className='flex flex-wrap items-center gap-x-1 text-sm' role='list'>
           {NAV.map(({ href, label }) => (
             <li key={href}>

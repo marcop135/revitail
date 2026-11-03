@@ -5,6 +5,18 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [Unreleased]
+
+### Changed
+
+- Use the theme-aware favicon in the site header and hide its navigation on small screens.
+
+### Fixed
+
+- Keep the site's closing terminal readable without JavaScript.
+- Disable animation delays in the site's reduced-motion view.
+- Return HTTP 404 for unknown site URLs.
+
 ## [1.13.1] - 2026-11-03
 
 ### Changed

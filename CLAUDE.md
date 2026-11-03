@@ -58,7 +58,7 @@ Guidance for working in this repository.
 ## Deployment
 
 - `.github/workflows/deploy.yml` builds on push to `main` and mirrors `dist/` to the Netsons FTP root (SFTP with a pinned key, else FTPS), then purges Cloudflare for `vitereact.marcopontili.com`.
-- `public/.htaccess` (copied into `dist/`) forces HTTPS, falls back extensionless paths to `index.html`, serves `404.html` for missing files, sets HSTS, nosniff, frame and referrer headers, and the CSP: `'self'` plus `self-hosted Matomo` for Matomo. New inline scripts would violate `script-src`.
+- `public/.htaccess` (copied into `dist/`) forces HTTPS, returns HTTP 404 with `404.html` for missing URLs, sets HSTS, nosniff, frame and referrer headers, and the CSP: `'self'` plus `self-hosted Matomo` for Matomo. New inline scripts would violate `script-src`.
 - Matomo is `public/matomo.js`, an external file loaded from `index.html` and `privacy.html`: cookieless, Do Not Track honoured.
 
 ## Audit contract

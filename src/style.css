@@ -264,13 +264,9 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .cl-line {
+  .cl-term[data-run] .cl-line {
     animation: rise 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
     animation-delay: calc(0.2s + var(--n, 0) * 0.35s);
-  }
-
-  .cl-term:not([data-run]) .cl-line {
-    animation-play-state: paused;
   }
 }
 
@@ -357,6 +353,7 @@ html {
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
