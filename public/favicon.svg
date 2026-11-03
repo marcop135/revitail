@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Revitail">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .revitail-ground { fill: #14141b; }
+      .revitail-base { fill: #6d28d9; }
+      .revitail-tile { fill: #b69cff; }
+      .revitail-stem { stroke: #61dafb; }
+      .revitail-leaf { fill: #61dafb; }
+    }
+  </style>
+  <rect class="revitail-ground" width="64" height="64" rx="16" fill="#ffffff"/>
+  <path class="revitail-base" fill="#4c1d95" d="m10 46 22-11 22 11-22 11Z"/>
+  <path class="revitail-tile" fill="#6d28d9" d="m10 40 22-11 22 11-22 11Z"/>
+  <path class="revitail-stem" fill="none" stroke="#0e7490" stroke-width="5" stroke-linecap="round" d="M32 41V25"/>
+  <path class="revitail-leaf" fill="#0e7490" d="M32 32C18 34 12 26 13 15c12-1 21 5 19 17Z"/>
+  <path fill="#ffc517" d="M32 26C30 14 39 8 51 10c0 12-7 19-19 16Z"/>
+</svg>

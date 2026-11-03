@@ -3,7 +3,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/brand/readme-dark.png" />
     <source media="(prefers-color-scheme: light)" srcset=".github/brand/readme.png" />
-    <img src=".github/brand/readme.png" alt="Vite logo tile, the name Revitail with the line Start fresh, revitalize your next React project, a terminal running npm run release:check with lint, format, test, build and audit passing, and stacked Tailwind CSS, React and Vite planes" width="900" />
+    <img src=".github/brand/readme.png" alt="Revitail sprout and layered tiles icon, the name Revitail with the line Start fresh, revitalize your next React project, a terminal running npm run release:check with lint, format, test, build and audit passing, and stacked Tailwind CSS, React and Vite planes" width="900" />
   </picture>
   </a>
 </p>
