@@ -9,8 +9,8 @@
 
 ### Changed
 
-- Soften README shadows and add a theme-aware sprout badge.
-- Add matching favicons that follow the system color scheme.
+- Soften README shadows and add a theme-aware sprout badge ([#282](https://github.com/marcop135/revitail/pull/282), [#281](https://github.com/marcop135/revitail/issues/281)).
+- Add matching favicons that follow the system color scheme ([#282](https://github.com/marcop135/revitail/pull/282)).
 - Upgrade Vitest and its coverage provider to 5.1.0 ([#280](https://github.com/marcop135/revitail/pull/280)).
 
 ## [1.13.0] - 2026-10-24
