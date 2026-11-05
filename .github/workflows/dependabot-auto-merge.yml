@@ -19,7 +19,11 @@ jobs:
 
       - name: Enable auto-merge for patch and minor updates
         if: steps.meta.outputs.update-type == 'version-update:semver-patch' || steps.meta.outputs.update-type == 'version-update:semver-minor'
-        run: gh pr merge --auto --squash "$PR_URL"
+        # An explicit message keeps GitHub from appending a Co-authored-by trailer for dependabot[bot].
+        run: gh pr merge --auto --squash --subject "${PR_TITLE} (#${PR_NUMBER})" --body "Dependabot ${UPDATE_TYPE}." "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          UPDATE_TYPE: ${{ steps.meta.outputs.update-type }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
