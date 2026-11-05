@@ -5,13 +5,19 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [1.14.1] - 2026-11-05
+
+### Changed
+
+- Update dependencies within their semver ranges ([#302](https://github.com/marcop135/revitail/pull/302)).
+
 ## [1.14.0] - 2026-11-05
 
 ### Changed
 
 - Check for npm and GitHub Actions updates monthly, and group npm minor and patch updates.
-- Load analytics through a cookieless Matomo Tag Manager container, adding time on page and script errors ([#299](https://github.com/marcop135/revitail/pull/299), [#296](https://github.com/marcop135/revitail/issues/296)).
-- List the anonymous interaction events in the privacy page ([#299](https://github.com/marcop135/revitail/pull/299)).
+- Move site analytics to a cookieless Matomo Tag Manager container, adding time on page and errors ([#299](https://github.com/marcop135/revitail/pull/299), [#296](https://github.com/marcop135/revitail/issues/296)).
+- List anonymous interaction events in the site's privacy page ([#299](https://github.com/marcop135/revitail/pull/299)).
 
 ### Fixed
 
