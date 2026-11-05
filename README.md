@@ -40,7 +40,7 @@ Start fresh. Revitalize your next React project.
 
 ## Quick start
 
-You need Node.js 22 (pinned in `.nvmrc`).
+You need Node.js 22+.
 
 ```bash
 git clone https://github.com/marcop135/revitail.git my-app
