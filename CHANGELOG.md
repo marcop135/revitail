@@ -5,6 +5,12 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [1.14.1] - 2026-11-05
+
+### Changed
+
+- Update dependencies within their semver ranges ([#302](https://github.com/marcop135/revitail/pull/302)).
+
 ## [1.14.0] - 2026-11-05
 
 ### Changed
