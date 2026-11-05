@@ -10,6 +10,8 @@
 ### Changed
 
 - Check for npm and GitHub Actions updates monthly, and group npm minor and patch updates.
+- Load analytics through a cookieless Matomo Tag Manager container, adding time on page and script errors
+- List the anonymous interaction events in the privacy page
 
 ## [1.13.4] - 2026-11-05
 
