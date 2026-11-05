@@ -10,8 +10,8 @@
 ### Changed
 
 - Check for npm and GitHub Actions updates monthly, and group npm minor and patch updates.
-- Load analytics through a cookieless Matomo Tag Manager container, adding time on page and script errors ([#299](https://github.com/marcop135/revitail/pull/299), [#296](https://github.com/marcop135/revitail/issues/296)).
-- List the anonymous interaction events in the privacy page ([#299](https://github.com/marcop135/revitail/pull/299)).
+- Move site analytics to a cookieless Matomo Tag Manager container, adding time on page and errors ([#299](https://github.com/marcop135/revitail/pull/299), [#296](https://github.com/marcop135/revitail/issues/296)).
+- List anonymous interaction events in the site's privacy page ([#299](https://github.com/marcop135/revitail/pull/299)).
 
 ### Fixed
 
