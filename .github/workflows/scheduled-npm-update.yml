@@ -72,7 +72,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.RELEASE_PAT }}
           PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           set -euo pipefail
-          gh pr merge --auto --squash --delete-branch "${PR_URL}" || \
+          # An explicit message keeps GitHub from appending a Co-authored-by trailer for the bot commit.
+          gh pr merge --auto --squash --delete-branch \
+            --subject "chore(deps): biweekly npm update (#${PR_NUMBER})" \
+            --body "Automated npm update within existing semver ranges." \
+            "${PR_URL}" || \
             echo "auto-merge already enabled or PR already merged, continuing"
