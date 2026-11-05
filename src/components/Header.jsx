@@ -29,10 +29,10 @@ function Header() {
         />
         Revitail
       </a>
-      <nav aria-label='Primary' className='hidden sm:block'>
+      <nav aria-label='Primary'>
         <ul className='flex flex-wrap items-center gap-x-1 text-sm' role='list'>
           {NAV.map(({ href, label }) => (
-            <li key={href}>
+            <li key={href} className='hidden sm:block'>
               <a
                 href={href}
                 className='focus-ring text-muted hover:text-ink inline-flex min-h-11 items-center rounded-md px-3 transition-colors'

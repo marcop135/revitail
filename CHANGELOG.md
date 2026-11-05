@@ -5,6 +5,14 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [Unreleased]
+
+### Changed
+
+- Raise the ESLint floor to 9.39.5 ([#291](https://github.com/marcop135/revitail/pull/291)).
+- Use the README hero design for the site's Open Graph image ([#291](https://github.com/marcop135/revitail/pull/291), [#290](https://github.com/marcop135/revitail/issues/290)).
+- Show the GitHub link in the site header on small screens ([#291](https://github.com/marcop135/revitail/pull/291)).
+
 ## [1.13.3] - 2026-11-03
 
 ### Changed
