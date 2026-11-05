@@ -13,7 +13,7 @@
 
 ### Fixed
 
-- Restore ESLint 9, so dependencies install again after ESLint 10 conflicted with the React plugin.
+- Restore ESLint 9, so dependencies install again after ESLint 10 conflicted with the React plugin ([#298](https://github.com/marcop135/revitail/pull/298), [#297](https://github.com/marcop135/revitail/issues/297)).
 
 ## [1.13.4] - 2026-11-05
 
