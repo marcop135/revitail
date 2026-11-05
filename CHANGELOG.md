@@ -9,9 +9,9 @@
 
 ### Changed
 
-- Raise the ESLint floor to 9.39.5.
-- Use the README hero design for the site's Open Graph image.
-- Show the GitHub link in the site header on small screens.
+- Raise the ESLint floor to 9.39.5 ([#291](https://github.com/marcop135/revitail/pull/291)).
+- Use the README hero design for the site's Open Graph image ([#291](https://github.com/marcop135/revitail/pull/291), [#290](https://github.com/marcop135/revitail/issues/290)).
+- Show the GitHub link in the site header on small screens ([#291](https://github.com/marcop135/revitail/pull/291)).
 
 ## [1.13.3] - 2026-11-03
 
