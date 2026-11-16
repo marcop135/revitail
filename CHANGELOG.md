@@ -5,6 +5,15 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [Unreleased]
+
+### Changed
+
+- Site copy: Drop the bold from the step labels in the home page's Markdown version ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+- Other copy: Lead the privacy page title and description with the topic, within the length bounds ([#PR](https://github.com/marcop135/revitail/pull/PR), [#306](https://github.com/marcop135/revitail/issues/306)).
+- Other copy: Lengthen the 404 page title and description to meet the length bounds ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+- Other copy: Use one home page description in the meta tags, JSON-LD, Markdown version and manifest ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+
 ## [1.14.1] - 2026-11-05
 
 ### Changed

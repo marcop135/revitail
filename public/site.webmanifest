@@ -1,7 +1,7 @@
 {
   "name": "Revitail",
   "short_name": "Revitail",
-  "description": "A Vite starter for React and Tailwind CSS with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up.",
+  "description": "A Vite starter for React 19 and Tailwind CSS v4 with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up.",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
