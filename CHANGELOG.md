@@ -9,10 +9,10 @@
 
 ### Changed
 
-- Site copy: Drop the bold from the step labels in the home page's Markdown version ([#PR](https://github.com/marcop135/revitail/pull/PR)).
-- Other copy: Lead the privacy page title and description with the topic, within the length bounds ([#PR](https://github.com/marcop135/revitail/pull/PR), [#306](https://github.com/marcop135/revitail/issues/306)).
-- Other copy: Lengthen the 404 page title and description to meet the length bounds ([#PR](https://github.com/marcop135/revitail/pull/PR)).
-- Other copy: Use one home page description in the meta tags, JSON-LD, Markdown version and manifest ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+- Site copy: Drop the bold from the step labels in the home page's Markdown version ([#309](https://github.com/marcop135/revitail/pull/309)).
+- Other copy: Lead the privacy page title and description with the topic, within the length bounds ([#309](https://github.com/marcop135/revitail/pull/309), [#306](https://github.com/marcop135/revitail/issues/306)).
+- Other copy: Lengthen the 404 page title and description to meet the length bounds ([#309](https://github.com/marcop135/revitail/pull/309)).
+- Other copy: Use one home page description in the meta tags, JSON-LD, Markdown version and manifest ([#309](https://github.com/marcop135/revitail/pull/309)).
 
 ## [1.14.1] - 2026-11-05
 
