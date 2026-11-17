@@ -20,7 +20,8 @@
     "audit": "npm audit",
     "audit:prod": "npm audit --omit=dev --audit-level=moderate",
     "audit:fix": "npm audit fix",
-    "release:check": "npm run lint && npm run format:check && npm run test:ci && npm run build && npm run audit:prod",
+    "check:site": "node scripts/check-site.mjs",
+    "release:check": "npm run lint && npm run format:check && npm run test:ci && npm run build && npm run check:site && npm run audit:prod",
     "analyze": "vite build --mode analyze",
     "prepare": "husky"
   },

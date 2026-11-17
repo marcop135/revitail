@@ -13,7 +13,7 @@ Vite 8 (Rolldown) + React 19 + Tailwind CSS v4, linted by ESLint, Stylelint, and
 - `npm run dev`, `npm run build`, `npm run preview`
 - `npm run lint`, `npm run lint:fix`, `npm run format`, `npm run format:check`
 - `npm run test:ci`, `npm run test:coverage`
-- `npm run release:check` is the CI gate: lint, format check, tests, build, `npm run audit:prod`
+- `npm run release:check` is the CI gate: lint, format check, tests, build, `npm run check:site`, `npm run audit:prod`
 
 ## Audit policy
 

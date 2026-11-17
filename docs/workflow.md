@@ -15,7 +15,7 @@ Every check runs at the earliest point it can catch a problem, and CI runs all o
 npm run release:check
 ```
 
-Runs lint, format check, tests, build and `npm audit --omit=dev --audit-level=moderate`. CI runs exactly this, so a green local run means a green CI run. CI also prints a full-tree `npm audit` that never blocks.
+Runs lint, format check, tests, build, `npm run check:site` (title and description lengths, JSON-LD and internal links in `dist/`) and `npm audit --omit=dev --audit-level=moderate`. CI runs exactly this, so a green local run means a green CI run. CI also prints a full-tree `npm audit` that never blocks.
 
 ## Tests
 
