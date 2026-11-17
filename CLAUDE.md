@@ -53,7 +53,8 @@ Guidance for working in this repository.
 ## SEO
 
 - `index.html` carries canonical, robots, Open Graph (incl. `og:image:alt`, `og:site_name`, `og:locale`), Twitter Card tags, and a JSON-LD `@graph` (`WebSite`, `SoftwareSourceCode`, `Person`). JSON-LD is a data block, so the CSP does not apply to it.
-- `public/` carries `robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/security.txt`, `privacy.html` and `404.html` (both styled by `public/static.css`). Update `sitemap.xml` `<lastmod>` when content changes meaningfully.
+- `public/` carries `robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/security.txt`, `privacy.html` and `404.html` (both styled by `public/static.css`), and the Markdown twins `index.md` and `privacy.md`; keep each twin in sync with its page. `scripts/prerender.mjs` stamps each page's last commit date into `sitemap.xml` `<lastmod>`, JSON-LD `dateModified` and the twin's frontmatter; its `PAGES` list maps pages to source files.
+- `public/.htaccess` serves the twin for `Accept: text/markdown` on `/` and `/privacy.html` (q-values compared, `406` when neither type is acceptable), with `Vary: Accept`, `No-Vary-Search` for UTM parameters, and a `Link` header from each page to its twin and back.
 
 ## Deployment
 

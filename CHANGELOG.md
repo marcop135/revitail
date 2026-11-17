@@ -7,8 +7,19 @@
 
 ## [Unreleased]
 
+### Added
+
+- Add JSON-LD to the site's privacy page, tied to the site graph ([#PR](https://github.com/marcop135/revitail/pull/PR), [#307](https://github.com/marcop135/revitail/issues/307)).
+- Add a Markdown version of the site's privacy page, linked from its head and from llms.txt ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+- Serve the site's Markdown versions on `Accept: text/markdown` requests, with `Vary: Accept` and a link back ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+- Add a JPEG Open Graph image for the site and point `og:image` at it ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+
 ### Changed
 
+- Add snippet and image-preview robots directives to the site's privacy page ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+- Drop the duplicate Twitter tags from the site's privacy page ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+- Date the site's sitemap and JSON-LD from each page's last git commit ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+- Send `No-Vary-Search` on the site's pages so UTM parameters share one cache entry ([#PR](https://github.com/marcop135/revitail/pull/PR)).
 - Site copy: Drop the bold from the step labels in the home page's Markdown version ([#309](https://github.com/marcop135/revitail/pull/309)).
 - Other copy: Lead the privacy page title and description with the topic, within the length bounds ([#309](https://github.com/marcop135/revitail/pull/309), [#306](https://github.com/marcop135/revitail/issues/306)).
 - Other copy: Lengthen the 404 page title and description to meet the length bounds ([#309](https://github.com/marcop135/revitail/pull/309)).
