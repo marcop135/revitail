@@ -14,6 +14,8 @@
 - Serve the site's Markdown versions on `Accept: text/markdown` requests, with `Vary: Accept` and a link back ([#310](https://github.com/marcop135/revitail/pull/310)).
 - Add a JPEG Open Graph image for the site and point `og:image` at it ([#310](https://github.com/marcop135/revitail/pull/310)).
 
+- Check built page titles, descriptions, JSON-LD and internal links in CI ([#311](https://github.com/marcop135/revitail/pull/311), [#308](https://github.com/marcop135/revitail/issues/308)).
+
 ### Changed
 
 - Add snippet and image-preview robots directives to the site's privacy page ([#310](https://github.com/marcop135/revitail/pull/310)).

@@ -15,7 +15,8 @@
 | `npm run test:ci`       | Vitest single run                                    |
 | `npm run test:coverage` | Coverage report in `coverage/`                       |
 | `npm run analyze`       | Build with the bundle visualizer (`dist/stats.html`) |
-| `npm run release:check` | Lint, format check, tests, build and prod audit      |
+| `npm run check:site`    | Check built titles, descriptions, JSON-LD and links  |
+| `npm run release:check` | Lint, format check, tests, build, site check, audit  |
 | `npm run audit:prod`    | `npm audit --omit=dev --audit-level=moderate`        |
 | `npm run clean`         | Remove `dist/` and `coverage/`                       |
 
