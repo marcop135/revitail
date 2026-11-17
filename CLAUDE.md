@@ -15,7 +15,8 @@ Guidance for working in this repository.
 - `npm run format` / `npm run format:check` — Prettier (class ordering via `prettier-plugin-tailwindcss`).
 - `npm run test` / `npm run test:ci` — Vitest (jsdom).
 - `npm run analyze` — build with `rollup-plugin-visualizer`, writes `dist/stats.html`.
-- `npm run release:check`: lint + format check + tests + build + `npm run audit:prod`.
+- `npm run check:site`: checks `dist/` (titles 30 to 65 and descriptions 70 to 160 characters, JSON-LD parses and every `@id` reference resolves, internal and same-origin links point at files that exist).
+- `npm run release:check`: lint + format check + tests + build + `npm run check:site` + `npm run audit:prod`.
 - `npm run audit:prod`: `npm audit --omit=dev --audit-level=moderate`, the only audit that gates CI. Full-tree `npm audit` runs in CI as a non-blocking advisory step.
 
 ## Architecture
@@ -53,7 +54,8 @@ Guidance for working in this repository.
 ## SEO
 
 - `index.html` carries canonical, robots, Open Graph (incl. `og:image:alt`, `og:site_name`, `og:locale`), Twitter Card tags, and a JSON-LD `@graph` (`WebSite`, `SoftwareSourceCode`, `Person`). JSON-LD is a data block, so the CSP does not apply to it.
-- `public/` carries `robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/security.txt`, `privacy.html` and `404.html` (both styled by `public/static.css`). Update `sitemap.xml` `<lastmod>` when content changes meaningfully.
+- `public/` carries `robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/security.txt`, `privacy.html` and `404.html` (both styled by `public/static.css`), and the Markdown twins `index.md` and `privacy.md`; keep each twin in sync with its page. `scripts/prerender.mjs` stamps each page's last commit date into `sitemap.xml` `<lastmod>`, JSON-LD `dateModified` and the twin's frontmatter; its `PAGES` list maps pages to source files.
+- `public/.htaccess` serves the twin for `Accept: text/markdown` on `/` and `/privacy.html` (q-values compared, `406` when neither type is acceptable), with `Vary: Accept`, `No-Vary-Search` for UTM parameters, and a `Link` header from each page to its twin and back.
 
 ## Deployment
 

@@ -4,6 +4,44 @@ Options -Indexes
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
 
+<IfModule mod_setenvif.c>
+  # q-values from Accept as integers 0 to 1000: NEG_MD (text/markdown, only when
+  # named), NEG_HT (text/html), NEG_TX (text/*), NEG_ANY (*/*). NEG_HE and NEG_ME
+  # are the effective HTML and Markdown values after wildcard fallback. No
+  # Accept header counts as */*.
+  SetEnvIf Request_URI . NEG_HE=0 NEG_ME=0
+  SetEnvIf Accept ^$ NEG_ANY=1000
+  SetEnvIfNoCase Accept "(^|,)\s*\*/\*\s*(,|$)" NEG_ANY=1000
+  SetEnvIfNoCase Accept "(^|,)\s*\*/\*\s*;\s*q=0?\.(\d)\s*(,|$)" NEG_ANY=$200
+  SetEnvIfNoCase Accept "(^|,)\s*\*/\*\s*;\s*q=0?\.(\d\d)\s*(,|$)" NEG_ANY=$20
+  SetEnvIfNoCase Accept "(^|,)\s*\*/\*\s*;\s*q=0?\.(\d\d\d)\s*(,|$)" NEG_ANY=$2
+  SetEnvIfNoCase Accept "(^|,)\s*\*/\*\s*;\s*q=0(\.0*)?\s*(,|$)" NEG_ANY=0
+  SetEnvIfNoCase Accept "(^|,)\s*\*/\*\s*;\s*q=1(\.0*)?\s*(,|$)" NEG_ANY=1000
+  SetEnvIfNoCase Accept "(^|,)\s*text/\*\s*(,|$)" NEG_TX=1000
+  SetEnvIfNoCase Accept "(^|,)\s*text/\*\s*;\s*q=0?\.(\d)\s*(,|$)" NEG_TX=$200
+  SetEnvIfNoCase Accept "(^|,)\s*text/\*\s*;\s*q=0?\.(\d\d)\s*(,|$)" NEG_TX=$20
+  SetEnvIfNoCase Accept "(^|,)\s*text/\*\s*;\s*q=0?\.(\d\d\d)\s*(,|$)" NEG_TX=$2
+  SetEnvIfNoCase Accept "(^|,)\s*text/\*\s*;\s*q=0(\.0*)?\s*(,|$)" NEG_TX=0
+  SetEnvIfNoCase Accept "(^|,)\s*text/\*\s*;\s*q=1(\.0*)?\s*(,|$)" NEG_TX=1000
+  SetEnvIfNoCase Accept "(^|,)\s*text/html\s*(,|$)" NEG_HT=1000
+  SetEnvIfNoCase Accept "(^|,)\s*text/html\s*;\s*q=0?\.(\d)\s*(,|$)" NEG_HT=$200
+  SetEnvIfNoCase Accept "(^|,)\s*text/html\s*;\s*q=0?\.(\d\d)\s*(,|$)" NEG_HT=$20
+  SetEnvIfNoCase Accept "(^|,)\s*text/html\s*;\s*q=0?\.(\d\d\d)\s*(,|$)" NEG_HT=$2
+  SetEnvIfNoCase Accept "(^|,)\s*text/html\s*;\s*q=0(\.0*)?\s*(,|$)" NEG_HT=0
+  SetEnvIfNoCase Accept "(^|,)\s*text/html\s*;\s*q=1(\.0*)?\s*(,|$)" NEG_HT=1000
+  SetEnvIfNoCase Accept "(^|,)\s*text/markdown\s*(,|$)" NEG_MD=1000
+  SetEnvIfNoCase Accept "(^|,)\s*text/markdown\s*;\s*q=0?\.(\d)\s*(,|$)" NEG_MD=$200
+  SetEnvIfNoCase Accept "(^|,)\s*text/markdown\s*;\s*q=0?\.(\d\d)\s*(,|$)" NEG_MD=$20
+  SetEnvIfNoCase Accept "(^|,)\s*text/markdown\s*;\s*q=0?\.(\d\d\d)\s*(,|$)" NEG_MD=$2
+  SetEnvIfNoCase Accept "(^|,)\s*text/markdown\s*;\s*q=0(\.0*)?\s*(,|$)" NEG_MD=0
+  SetEnvIfNoCase Accept "(^|,)\s*text/markdown\s*;\s*q=1(\.0*)?\s*(,|$)" NEG_MD=1000
+  # Fallback order: the named type, then text/*, then */*.
+  SetEnvIf NEG_ANY ^(\d+)$ NEG_HE=$1 NEG_ME=$1
+  SetEnvIf NEG_TX ^(\d+)$ NEG_HE=$1 NEG_ME=$1
+  SetEnvIf NEG_HT ^(\d+)$ NEG_HE=$1
+  SetEnvIf NEG_MD ^(\d+)$ NEG_ME=$1
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
@@ -11,6 +49,26 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Accept: text/markdown negotiation for the pages with a Markdown twin. The
+  # NEG_* q-values (0 to 1000) come from the SetEnvIf block above; explicit .md URLs are
+  # never negotiated. Markdown wins when the client names it at a q-value at
+  # least as high as HTML's; nothing acceptable answers 406.
+  RewriteRule ^(index\.html)?$ - [E=NEG_TWIN:/index.md]
+  RewriteRule ^privacy\.html$ - [E=NEG_TWIN:/privacy.md]
+
+  RewriteCond %{ENV:NEG_TWIN} .
+  RewriteCond expr "-n reqenv('NEG_MD') && reqenv('NEG_ME') -gt 0 && reqenv('NEG_ME') -ge reqenv('NEG_HE')"
+  RewriteRule ^ %{ENV:NEG_TWIN} [L]
+
+  RewriteCond %{ENV:NEG_TWIN} .
+  RewriteCond expr "reqenv('NEG_HE') -eq 0 && reqenv('NEG_ME') -gt 0"
+  RewriteRule ^ %{ENV:NEG_TWIN} [L]
+
+  RewriteCond %{ENV:NEG_TWIN} .
+  RewriteCond %{HTTP:Accept} .
+  RewriteCond expr "reqenv('NEG_HE') -eq 0 && reqenv('NEG_ME') -eq 0"
+  RewriteRule ^ - [R=406,L]
 
   # This starter has one page. Unknown paths must return a real 404 rather
   # than the home page with a successful status.
@@ -26,8 +84,27 @@ ErrorDocument 404 /404.html
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
   Header always set Cross-Origin-Opener-Policy "same-origin"
-  # Discovery for agents and crawlers that never parse the HTML; mirrors the <link> tags in index.html.
-  Header always set Link "</index.md>; rel=\"alternate\"; type=\"text/markdown\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\"; title=\"llms.txt\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\""
+  # Discovery for agents and crawlers that never parse the HTML; mirrors the
+  # <link> tags. Each page names its own Markdown twin, and each twin points
+  # back at its HTML as canonical.
+  <If "%{REQUEST_URI} == '/privacy.html'">
+    Header always set Link '</privacy.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"; type="text/plain"; title="llms.txt", </sitemap.xml>; rel="sitemap"; type="application/xml"'
+  </If>
+  <ElseIf "%{REQUEST_URI} == '/index.md'">
+    Header always set Link '<https://vitereact.marcopontili.com/>; rel="canonical"; type="text/html"'
+  </ElseIf>
+  <ElseIf "%{REQUEST_URI} == '/privacy.md'">
+    Header always set Link '<https://vitereact.marcopontili.com/privacy.html>; rel="canonical"; type="text/html"'
+  </ElseIf>
+  <Else>
+    Header always set Link '</index.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"; type="text/plain"; title="llms.txt", </sitemap.xml>; rel="sitemap"; type="application/xml"'
+  </Else>
+  # Negotiated pages and their twins vary by Accept. Tracking parameters do
+  # not change them, so browsers and caches can share one entry.
+  <If "%{REQUEST_URI} =~ m#^/((index|privacy)\.(html|md))?$#">
+    Header always merge Vary "Accept"
+    Header always set No-Vary-Search 'params=("utm_source" "utm_medium" "utm_campaign")'
+  </If>
   # Self plus the self-hosted Matomo at mt.marcopontili.com, nothing else.
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://mt.marcopontili.com; connect-src 'self' https://mt.marcopontili.com; img-src 'self' data: https://mt.marcopontili.com; style-src 'self'; font-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 

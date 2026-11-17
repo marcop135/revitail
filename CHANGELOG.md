@@ -5,6 +5,32 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [1.15.0] - 2026-11-17
+
+### Added
+
+- Add JSON-LD to the site's privacy page, tied to the site graph ([#310](https://github.com/marcop135/revitail/pull/310), [#307](https://github.com/marcop135/revitail/issues/307)).
+- Add a Markdown version of the site's privacy page, linked from its head and from llms.txt ([#310](https://github.com/marcop135/revitail/pull/310)).
+- Serve the site's Markdown versions on `Accept: text/markdown` requests, with `Vary: Accept` and a link back ([#310](https://github.com/marcop135/revitail/pull/310)).
+- Add a JPEG Open Graph image for the site and point `og:image` at it ([#310](https://github.com/marcop135/revitail/pull/310)).
+
+- Check built page titles, descriptions, JSON-LD and internal links in CI ([#311](https://github.com/marcop135/revitail/pull/311), [#308](https://github.com/marcop135/revitail/issues/308)).
+
+### Changed
+
+- Add snippet and image-preview robots directives to the site's privacy page ([#310](https://github.com/marcop135/revitail/pull/310)).
+- Drop the duplicate Twitter tags from the site's privacy page ([#310](https://github.com/marcop135/revitail/pull/310)).
+- Date the site's sitemap and JSON-LD from each page's last git commit ([#310](https://github.com/marcop135/revitail/pull/310)).
+- Send `No-Vary-Search` on the site's pages so UTM parameters share one cache entry ([#310](https://github.com/marcop135/revitail/pull/310)).
+- Site copy: Drop the bold from the step labels in the home page's Markdown version ([#309](https://github.com/marcop135/revitail/pull/309)).
+- Other copy: Lead the privacy page title and description with the topic, within the length bounds ([#309](https://github.com/marcop135/revitail/pull/309), [#306](https://github.com/marcop135/revitail/issues/306)).
+- Other copy: Lengthen the 404 page title and description to meet the length bounds ([#309](https://github.com/marcop135/revitail/pull/309)).
+- Other copy: Use one home page description in the meta tags, JSON-LD, Markdown version and manifest ([#309](https://github.com/marcop135/revitail/pull/309)).
+
+### Fixed
+
+- Send the site's `Link` response headers without stray backslashes, so agents can parse them ([#312](https://github.com/marcop135/revitail/pull/312)).
+
 ## [1.14.1] - 2026-11-05
 
 ### Changed
