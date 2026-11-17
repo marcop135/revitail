@@ -27,6 +27,10 @@
 - Other copy: Lengthen the 404 page title and description to meet the length bounds ([#309](https://github.com/marcop135/revitail/pull/309)).
 - Other copy: Use one home page description in the meta tags, JSON-LD, Markdown version and manifest ([#309](https://github.com/marcop135/revitail/pull/309)).
 
+### Fixed
+
+- Send the site's `Link` response headers without stray backslashes, so agents can parse them ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+
 ## [1.14.1] - 2026-11-05
 
 ### Changed

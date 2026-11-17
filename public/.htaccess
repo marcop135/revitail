@@ -88,22 +88,22 @@ ErrorDocument 404 /404.html
   # <link> tags. Each page names its own Markdown twin, and each twin points
   # back at its HTML as canonical.
   <If "%{REQUEST_URI} == '/privacy.html'">
-    Header always set Link "</privacy.md>; rel=\"alternate\"; type=\"text/markdown\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\"; title=\"llms.txt\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\""
+    Header always set Link '</privacy.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"; type="text/plain"; title="llms.txt", </sitemap.xml>; rel="sitemap"; type="application/xml"'
   </If>
   <ElseIf "%{REQUEST_URI} == '/index.md'">
-    Header always set Link "<https://vitereact.marcopontili.com/>; rel=\"canonical\"; type=\"text/html\""
+    Header always set Link '<https://vitereact.marcopontili.com/>; rel="canonical"; type="text/html"'
   </ElseIf>
   <ElseIf "%{REQUEST_URI} == '/privacy.md'">
-    Header always set Link "<https://vitereact.marcopontili.com/privacy.html>; rel=\"canonical\"; type=\"text/html\""
+    Header always set Link '<https://vitereact.marcopontili.com/privacy.html>; rel="canonical"; type="text/html"'
   </ElseIf>
   <Else>
-    Header always set Link "</index.md>; rel=\"alternate\"; type=\"text/markdown\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\"; title=\"llms.txt\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\""
+    Header always set Link '</index.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"; type="text/plain"; title="llms.txt", </sitemap.xml>; rel="sitemap"; type="application/xml"'
   </Else>
   # Negotiated pages and their twins vary by Accept. Tracking parameters do
   # not change them, so browsers and caches can share one entry.
   <If "%{REQUEST_URI} =~ m#^/((index|privacy)\.(html|md))?$#">
     Header always merge Vary "Accept"
-    Header always set No-Vary-Search "params=(\"utm_source\" \"utm_medium\" \"utm_campaign\")"
+    Header always set No-Vary-Search 'params=("utm_source" "utm_medium" "utm_campaign")'
   </If>
   # Self plus the self-hosted Matomo at mt.marcopontili.com, nothing else.
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://mt.marcopontili.com; connect-src 'self' https://mt.marcopontili.com; img-src 'self' data: https://mt.marcopontili.com; style-src 'self'; font-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
