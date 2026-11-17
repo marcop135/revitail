@@ -29,7 +29,7 @@
 
 ### Fixed
 
-- Send the site's `Link` response headers without stray backslashes, so agents can parse them ([#PR](https://github.com/marcop135/revitail/pull/PR)).
+- Send the site's `Link` response headers without stray backslashes, so agents can parse them ([#312](https://github.com/marcop135/revitail/pull/312)).
 
 ## [1.14.1] - 2026-11-05
 
