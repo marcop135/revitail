@@ -31,7 +31,7 @@ The page you see is the starter's own landing page. For a new app, delete or rep
 - `src/constants.js` and `src/hooks/useCopy.js`
 - The tests in `src/App.test.jsx` that cover the demo
 - `public/matomo.js` and its `<script>` tag in `index.html` and `public/privacy.html`
-- `public/sitemap.xml`, `robots.txt`, `llms.txt`, `.well-known/security.txt` and `privacy.html`, or update them for your domain
+- `public/sitemap.xml`, `robots.txt`, `llms.txt`, `index.md`, `.well-known/security.txt`, `privacy.html` and `privacy.md`, or update them for your domain, along with the `PAGES` list in `scripts/prerender.mjs`
 - `.github/brand/` and the `brand:images` scripts in `package.json`
 - `.github/workflows/deploy.yml` if you do not deploy over FTP (see [Deploy](./deploy.md))
 

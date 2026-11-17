@@ -71,7 +71,9 @@ Vite's default build target: Chrome and Edge 111, Firefox 114, Safari 16.4. Tail
 ## SEO
 
 - `index.html` has a canonical URL, robots, Open Graph and Twitter Card tags with image alt text, and a JSON-LD `@graph` (`WebSite`, `SoftwareSourceCode`, `Person`).
-- `public/` has `robots.txt`, `sitemap.xml`, `llms.txt` and `.well-known/security.txt`.
+- `public/` has `robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/security.txt`, and Markdown versions of the pages (`index.md`, `privacy.md`).
+- The build dates `sitemap.xml` `<lastmod>` and JSON-LD `dateModified` from each page's last git commit (`scripts/prerender.mjs`).
+- `public/.htaccess` serves the Markdown version to clients that ask for `text/markdown`.
 - Paths other than `/` render `NotFound` with `noindex`.
 
 Replace the URLs and names with yours; see [Getting started](./getting-started.md#rename-the-project).

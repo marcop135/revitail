@@ -32,6 +32,14 @@
       "height": 630,
       "maxBytes": 300000,
       "palette": true
+    },
+    {
+      "source": "og.svg",
+      "output": "../../public/og/hero.jpg",
+      "width": 1200,
+      "height": 630,
+      "maxBytes": 300000,
+      "quality": 85
     }
   ]
 }

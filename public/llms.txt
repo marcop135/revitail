@@ -25,4 +25,4 @@ npm run dev
 - [Markdown](https://vitereact.marcopontili.com/index.md): this site's home page as Markdown
 - [CHANGELOG](https://github.com/marcop135/revitail/blob/main/CHANGELOG.md): release history
 - [CONTRIBUTING](https://github.com/marcop135/revitail/blob/main/CONTRIBUTING.md): workflow and gates
-- [Privacy](https://vitereact.marcopontili.com/privacy.html): cookieless self-hosted Matomo, no cookies
+- [Privacy](https://vitereact.marcopontili.com/privacy.md): cookieless self-hosted Matomo, no cookies
